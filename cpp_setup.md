@@ -39,6 +39,15 @@ choco install llvm
 choco upgrade llvm
 ```
 
+1.1.3. Install Visual Studio Desktop development with C++ workload, which LLVM depends on:
+
+- Open `powershell` as _administrator_.
+
+```ps
+choco install visualstudio2019community
+choco install visualstudio2019-workload-nativedesktop
+```
+
 ### 1.2. Project Setup
 
 1.2.1. Create the project folder

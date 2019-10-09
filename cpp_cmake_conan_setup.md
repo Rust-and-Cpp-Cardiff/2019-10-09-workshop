@@ -22,5 +22,37 @@ So, additionally to clang/LLVM we need to install:
 3. [MacOS](#3-macos)
 
 ## 1. Windows
+
+
 ## 2. Linux (Ubuntu, Manjaro)
 ## 3. MacOS
+### 3.1 Tools installation
+
+3.1.1 Install cmake
+
+- In terminal run following command
+
+```shell
+brew install cmake
+```
+3.1.2 Install build tool
+
+There is no need to install the build-tool, `make` is already installed by default. You might want to install jom or ninja (but it's out of scope).
+
+3.1.3 Install conan:
+
+- In terminal run commands:
+
+```shell
+brew install python
+pip3 install --user conan
+```
+
+- Restart the termianl. Try running `conan --version` to see if it's added to the PATH. If not, run the following in the terminal (one off action):
+
+```shell
+#we installed conan with '--user' option; it might not be available on path
+echo 'export PATH=${HOME}/Library/Python/3.7/bin/:$PATH' >> ~/.profile
+. ~/.profile
+```
+

@@ -17,9 +17,9 @@ So, additionally to clang/LLVM we need to install:
 * build tool
 * conan (which is written in python -> python dependency; make it python3!)
 
-1. [Windows](##-1.-windows)
-2. [Linux (Ubuntu, Manjaro)](##-2.-linux-(ubuntu,-manjaro))
-3. [MacOS](##-3.-macos)
+1. [Windows](#1-windows)
+2. [Linux (Ubuntu, Manjaro)](#2-linux-ubuntu-manjaro)
+3. [MacOS](#3-macos)
 
 ## 1. Windows
 ## 2. Linux (Ubuntu, Manjaro)

@@ -6,7 +6,7 @@ Hacktoberfest workshop. https://www.meetup.com/rust-and-c-plus-plus-in-cardiff/e
 ## C++
 
 - [C++ standard](https://isocpp.org/)
-- [Conan Package Managher](https://conan.io/)
+- [Conan Package Manager](https://conan.io/)
 - [C++17 LLVM/Clang setup](./cpp_setup.md)
 - [CMake Project starter project](./cpp_cmake_conan_setup.md) with Conan package manager
 

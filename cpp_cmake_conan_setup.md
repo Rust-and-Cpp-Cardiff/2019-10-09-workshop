@@ -283,3 +283,24 @@ cmake --build .
 ./bin/cpp-starter-tests
 ```
 
+# 4. MacOS CMake/Conan project description:
+
+CMake project configuration is kept in files called CMakeLists.txt
+The root CMakeLists.txt is responsible for:
+* downloading conan.cmake if it doesn't exist - that's the conan plugin into cmake; after including it we have access to `conan_*` functions
+* `conan_cmake_run(...)` function runs `conan` command line tool, passing it parameters being parameters to this function:
+** REQUIRES followed by the list of packages we want to be managed by conan. If for instance we wanted to add another package, e.g. [cpprestsdk](https://bintray.com/bincrafters/public-conan/cpprestsdk%3Abincrafters), we'd have as following:
+```conan_cmake_run(REQUIRES 
+                  gtest/1.8.1@bincrafters/stable
+                  cpprestsdk/2.10.14@bincrafters/stable
+                BASIC_SETUP 
+                CMAKE_TARGETS
+                BUILD missing)
+```
+** CMAKE_TARGETS tells conan plugin to export built packages in form of cmake targets
+** BUILD missing says to build packages for whcih binaries are not found in remotes
+* `add_subdirectory` adds another subdirectory in which CMakeLists.txt should be defined
+* `add_executable(cpp-starter-tests main.cpp)` defines CMake binary target `cpp-starter-tests` to be built from main.cpp file(s)
+* `target_link_libraries(cpp-starter-tests CONAN_PKG::gtest)` says binary target `cpp-starter-tests` depends/links to the library CONAN_PKG:gtest provided by conan
+
+

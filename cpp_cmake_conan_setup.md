@@ -100,7 +100,7 @@ TODO
 
 2.1.1 Install cmake
 
-- Kitware provides Ubuntu [repository for cmake](https://apt.kitware.com). Following these commands:
+- `Ubuntu`: Kitware provides Ubuntu [repository for cmake](https://apt.kitware.com). Following these commands:
 
 ```shell
 
@@ -113,16 +113,37 @@ sudo apt-key --keyring /etc/apt/trusted.gpg del C1F34CDD40CD72DA
 sudo apt-get install cmake
 ```
 
+- `Manjaro`: We download prebuilt binary
+
+```shell
+    export CMAKE_VERSION=3.15.4
+    wget -qO- https://github.com/Kitware/CMake/releases/download/v${CMAKE_VERSION}/cmake-${CMAKE_VERSION}-Linux-x86_64.tar.gz | \
+        sudo tar -xvzf - -C /opt/
+    echo "export PATH=\${PATH}:/opt/cmake-${CMAKE_VERSION}-Linux-x86_64/bin" >> ~/.bash_profile 
+    . ~/.bash_profile
+```
+
 2.1.2 Install build tool
 
 - We need to install `make` build tool.
+
+`Ubuntu`:
+
 ```shell
 sudo apt-get install make
+```
+
+`Manjaro`:
+
+```shell
+sudo pacman -S make
 ```
 
 2.1.3 Install conan:
 
 - In terminal run commands:
+
+`Ubuntu`:
 
 ```shell
 sudo apt-get install -y python3 python3-pip && \
@@ -135,6 +156,14 @@ pip3 install --user conan && \
 echo "export PATH=~/.local/bin:\$PATH" >> ~/.profile
 ~/.profile
 ```
+
+`Manjaro`:
+
+```shell
+    sudo pacman -S python python-pip && \
+    pip3 install conan
+```
+
 
 2.1.4 Build cmake starter project:
 

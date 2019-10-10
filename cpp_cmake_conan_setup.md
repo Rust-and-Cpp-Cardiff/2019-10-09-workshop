@@ -23,6 +23,77 @@ So, additionally to clang/LLVM we need to install:
 
 ## 1. Windows
 
+### 1.1 Tools Installation
+
+1.1.1 Install cmake
+
+- Open PowerShell with Administrator priviledges and run command below. This will install CMake to `C:\Program Files\CMake\`.
+
+```ps
+choco install cmake
+```
+
+1.1.2 Build tool
+
+- There's no need to install any build tool. nmake is delivered with chocolatey visualstudio2019-workload-nativedesktop workload we installed earlier. We could install jom or ninja, which is out of scope of this tutorial.
+
+1.1.3 Install conan:
+
+- Open PowerShell with Administrator priviledges and run command below. This will install Pytho to e.g. `C:\Python37`:
+
+```ps
+choco install python
+```
+
+- Open PowerShell as normal user:
+
+```ps
+#might need to add python path: `set PATH=C:\Python37:%PATH%`
+pip3 install conan
+```
+
+1.1.4 Install git:
+
+- Open PowerShell with Administrator priviledges and run:
+
+```ps
+choco install git
+```
+
+1.1.4 Build cmake starter project:
+
+- Open PowerShell as normal user, clone the repository:
+```ps
+git clone https://github.com/Rust-and-Cpp-Cardiff/2019-10-09-workshop.git
+cd .\2019-10-09-workshop\cpp-starter-project
+
+```
+
+- Create a build directory (note, it's worth having out-of-source build):
+
+```
+mkdir build
+cd build
+```
+
+- Run CMake to configure the project (create Makefiles for nmake). We need to add CMake bin directory to the path, as it wasn't added automatically
+
+```ps
+$env:Path += ';C:\Program Files\CMake\bin\'
+cmake `
+  -DCMAKE_C_COMPILER="clang-cl" -DCMAKE_CXX_COMPILER="clang-cl" `
+  -DCMAKE_BUILD_TYPE=Debug `
+  -G "Visual Studio 16 2019" `
+  --configure ..
+```
+
+- Run CMake to build using appropriate build tool:
+
+```ps
+cmake --build .
+```
+
+TODO
 
 ## 2. Linux (Ubuntu, Manjaro)
 ## 3. MacOS
@@ -51,8 +122,57 @@ pip3 install --user conan
 - Restart the termianl. Try running `conan --version` to see if it's added to the PATH. If not, run the following in the terminal (one off action):
 
 ```shell
-#we installed conan with '--user' option; it might not be available on path
-echo 'export PATH=${HOME}/Library/Python/3.7/bin/:$PATH' >> ~/.profile
+find ~/Library/Python -name "conan" \
+  -exec echo -n "export PATH=\${PATH}:" \; \
+  -exec dirname "{}" \; 
+```
+
+- If you're happy with the result of the above action run this:
+
+```shell
+find ~/Library/Python -name "conan" \
+  -exec echo -n "export PATH=\${PATH}:" \; \ 
+  -exec dirname "{}" \; > ~/.profile
+
 . ~/.profile
+```
+
+3.1.4 Build cmake starter project:
+
+- In terminal
+
+```shell
+git clone https://github.com/Rust-and-Cpp-Cardiff/2019-10-09-workshop.git
+cd ./2019-10-09-workshop/cpp-starter-project
+
+```
+
+- Create a build directory
+
+```shell
+mkdir build && cd build
+```
+
+- Run CMake to configure the project (create Makefiles for make).
+
+```shell
+export SDKROOT=$(xcrun --show-sdk-path)
+cmake \
+  -DCMAKE_BUILD_TYPE=Debug \
+  --configure ..
+```
+
+- Run CMake to build using appropriate build tool:
+
+```shell
+cmake --build .
+```
+
+- Run resulting binaries:
+```shell
+# production binary
+./bin/cpp-starter
+# tests binary
+./bin/cpp-starter-tests
 ```
 

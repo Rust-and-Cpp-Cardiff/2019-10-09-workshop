@@ -17,7 +17,7 @@ Hacktoberfest workshop. https://www.meetup.com/rust-and-c-plus-plus-in-cardiff/e
 - [Rust Cargo Crates](https://crates.io/)
 - Rust are we X yet?
   - [Are we GUI yet?](https://areweguiyet.com/)
-  - [Are we Game yet?(http://arewegameyet.com/)
+  - [Are we Game yet?](http://arewegameyet.com/)
   - [Are we IDE yet?](https://areweideyet.com/)
   - [Are we Web yet?](http://www.arewewebyet.org/)
   

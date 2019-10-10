@@ -96,6 +96,84 @@ cmake --build .
 TODO
 
 ## 2. Linux (Ubuntu, Manjaro)
+
+
+2.1.1 Install cmake
+
+- Kitware provides Ubuntu [repository for cmake](https://apt.kitware.com). Following these commands:
+
+```shell
+
+wget -O - https://apt.kitware.com/keys/kitware-archive-latest.asc 2>/dev/null | sudo apt-key add -
+#Beaver 18.04, for Ubuntu Xenial 16.04 see the link above
+sudo apt-add-repository 'deb https://apt.kitware.com/ubuntu/ bionic main'
+sudo apt-get update
+sudo apt-get install kitware-archive-keyring
+sudo apt-key --keyring /etc/apt/trusted.gpg del C1F34CDD40CD72DA
+sudo apt-get install cmake
+```
+
+2.1.2 Install build tool
+
+- We need to install `make` build tool.
+```shell
+sudo apt-get install make
+```
+
+2.1.3 Install conan:
+
+- In terminal run commands:
+
+```shell
+sudo apt-get install -y python3 python3-pip && \
+pip3 install --user conan && \
+```
+
+- Restart the termianl. Try running `conan --version` to see if it's added to the PATH. If not, run the following in the terminal (one off action):
+
+```shell
+echo "export PATH=~/.local/bin:\$PATH" >> ~/.profile
+~/.profile
+```
+
+2.1.4 Build cmake starter project:
+
+- In terminal
+
+```shell
+git clone https://github.com/Rust-and-Cpp-Cardiff/2019-10-09-workshop.git
+cd ./2019-10-09-workshop/cpp-starter-project
+
+```
+
+- Create a build directory
+
+```shell
+mkdir build && cd build
+```
+
+- Run CMake to configure the project (create Makefiles for make).
+
+```shell
+CC=/usr/bin/clang \
+CXX=/usr/bin/clang++ \
+    cmake --configure -DCMAKE_BUILD_TYPE=Debug ..
+```
+
+- Run CMake to build using appropriate build tool:
+
+```shell
+cmake --build .
+```
+
+- Run resulting binaries:
+```shell
+# production binary
+./bin/cpp-starter
+# tests binary
+./bin/cpp-starter-tests
+```
+
 ## 3. MacOS
 ### 3.1 Tools installation
 

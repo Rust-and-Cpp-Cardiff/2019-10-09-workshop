@@ -82,6 +82,10 @@ int main()
 ```
 
 - (Optional) I recommend you use better a text editor than `notepad`. [Notepad++](https://chocolatey.org/packages/notepadplusplus) or [Visual Studio Code](https://chocolatey.org/packages/vscode) are pretty code.
+- To launch with notepad++ type the following in powershell:
+```
+start notepad++ .\MyCppProject\src\main.cpp
+```
 
 ### 1.3. Build and Run
 

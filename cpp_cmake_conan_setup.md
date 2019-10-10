@@ -48,7 +48,7 @@ choco install python
 - Open PowerShell as normal user:
 
 ```ps
-#might need to add python path: `set PATH=C:\Python37:%PATH%`
+#might need to add python path: `$env:Path += ';C:\Python37\'`
 pip3 install conan
 ```
 

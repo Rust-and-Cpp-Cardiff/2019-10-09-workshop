@@ -78,6 +78,8 @@ cd build
 
 - Run CMake to configure the project (create Makefiles for nmake). We need to add CMake bin directory to the path, as it wasn't added automatically
 
+TODO: standalone clang doesn't play well with cmake, need to figure out more
+
 ```ps
 $env:Path += ';C:\Program Files\CMake\bin\'
 cmake `
@@ -92,8 +94,6 @@ cmake `
 ```ps
 cmake --build .
 ```
-
-TODO
 
 ## 2. Linux (Ubuntu, Manjaro)
 
